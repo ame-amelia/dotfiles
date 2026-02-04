@@ -1,0 +1,42 @@
+" General preferences
+set nocompatible
+filetype on
+syntax on
+set relativenumber
+set cursorline
+set splitbelow splitright
+set foldmethod=indent
+nnoremap <space> za
+
+" Set tab to 4 spaces, because 4 spaces is superior to everything else.
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set nowrap
+
+" Type :Cheatsheet to open cheatsheet
+function! OpenCheatsheet()
+    botright vsplit ~/.vim/cheatsheet.md
+    setlocal readonly nomodifiable
+    let l:width = float2nr(&columns * 0.25)
+    execute "vertical resize " . l:width 
+    call feedkeys("/", "n")
+endfunction
+
+command! Cheatsheet call OpenCheatsheet()
+
+" vim-plug
+let g:data_dir = expand('~/.vim')
+if empty(glob(g:data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo ' . g:data_dir . '/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    augroup PlugInstall
+        autocmd!
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    augroup END
+endif
+
+call plug#begin()
+
+Plug 'Townk/vim-autoclose', { 'rtp': 'plugin' }
+
+call plug#end()
