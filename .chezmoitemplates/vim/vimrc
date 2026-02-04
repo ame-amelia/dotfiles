@@ -16,7 +16,7 @@ set nowrap
 
 " Type :Cheatsheet to open cheatsheet
 function! OpenCheatsheet()
-    botright vsplit ~/.vim/cheatsheet.md
+    botright vsplit ~/.vim/vim_cheatsheet.md
     setlocal readonly nomodifiable
     let l:width = float2nr(&columns * 0.25)
     execute "vertical resize " . l:width 
@@ -27,8 +27,9 @@ command! Cheatsheet call OpenCheatsheet()
 
 " vim-plug
 let g:data_dir = expand('~/.vim')
+
 if empty(glob(g:data_dir . '/autoload/plug.vim'))
-    silent execute '!curl -fLo ' . g:data_dir . '/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    silent execute '!echo Installing vim-plug...; curl -fLo ' . g:data_dir . '/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     augroup PlugInstall
         autocmd!
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC

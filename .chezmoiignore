@@ -1,0 +1,6 @@
+# .chezmoiignore
+
+# Unix and Unix-like
+{{ if and (ne .chezmoi.os "android") (ne .chezmoi.os "linux") }}
+.vim/
+{{ end }}
