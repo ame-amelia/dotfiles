@@ -8,6 +8,11 @@ set splitbelow splitright
 set foldmethod=indent
 nnoremap <space> za
 
+" Bind ctrl + backspace to ctrl + w
+inoremap <C-h> <C-w>
+inoremap <C-BS> <C-w>
+" inoremap <C-?> <C-w>
+
 " Set tab to 4 spaces, because 4 spaces is superior to everything else.
 set shiftwidth=4
 set tabstop=4
